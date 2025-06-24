@@ -18,7 +18,7 @@ https://drive.google.com/file/d/1BvHmY1bdqJzhMu7bNaG5Um7dn3tu1aC8/view?usp=drive
 
 This project explores **spatial imbalances** in Washington DC’s Capital BikeShare system. It combines **descriptive analytics**, **predictive modeling**, and **geospatial optimization** to:
 
-- Measure system-wide fairness with a custom metric
+- Measure station-level system imbalance with a custom metric
 - Predict ride demand at the station level
 - Recommend practical redistribution strategies — all **without adding more bikes**
 
@@ -34,12 +34,12 @@ This project explores **spatial imbalances** in Washington DC’s Capital BikeSh
 
 ## 📌 Features Used
 
-- **Location-based:** Station ID, coordinates, ward  
-- **Temporal:** Date, day of week, hour, season, holiday  
-- **Ride metadata:** Bike type, trip duration/distance  
-- **User type:** Member vs. casual  
-- **Station context:** Elevation, density, popularity  
-- **Weather:** Real-feel temperature, wind speed, rain  
+- **Location-based:** e.g. Station ID, coordinates, ward  
+- **Temporal:** e.g. Date, day of week, hour, season, holiday  
+- **Ride metadata:** e.g. Bike type, trip duration/distance  
+- **User type:** e.g. Member vs. casual  
+- **Station context:** e.g. Elevation, density, popularity  
+- **Weather:** e.g. Real-feel temperature, wind speed, rain  
 
 ➡️ **43 unique variables** used across the modeling and analysis pipeline.
 
@@ -48,7 +48,8 @@ This project explores **spatial imbalances** in Washington DC’s Capital BikeSh
 ## 🔧 Methodology
 
 ### 1. 🚦 Imbalance KPI: **TANF**  
-Total Adjustment Needed for Fairness — a custom metric representing the **minimum number of bikes to move** to equalize supply and demand across wards or stations.
+Total Absolut Net Flow — a custom metric representing the **minimum number of bikes to move** 
+to equalize supply and demand across wards or stations.
 
 ### 2. 🤖 Machine Learning  
 - **XGBoost** used to predict daily rides per station  
@@ -69,10 +70,11 @@ Total Adjustment Needed for Fairness — a custom metric representing the **mini
 
 ## 📈 Key Results
 
-- Ward 6 is a **net sink** for electric bikes  
-- Several stations have persistent excess or shortage  
+- Ward 6 is a (the only) net inflow neighboorhood
+- Several stations have persistent deficit or surplus  
 - Predictive model effectively forecasts demand  
-- Redistribution simulation demonstrates reduced TANF by ~30%
+- Proposal of logistic bike redistribution scheme taking 
+  into account level of surplus/deficit and distance btw stations
 
 ---
 
@@ -86,14 +88,6 @@ Total Adjustment Needed for Fairness — a custom metric representing the **mini
 
 - **ML Prediction Residuals:**  
   👉 [View Online](https://jakobd1109.github.io/ML_residuals_over_the_year.html)
-
----
-
-## 🔮 Future Work
-
-- Add **real-time prediction pipeline**  
-- Automate **daily redistribution recommendations**  
-- Improve feature engineering for **edge-case stations**
 
 ---
 
